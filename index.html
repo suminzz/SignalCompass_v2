@@ -33,7 +33,6 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* ── 정기구독 패널 슬라이드 ── */
         #subscribe-panel {
             max-height: 0;
             overflow: hidden;
@@ -45,7 +44,6 @@
             opacity: 1;
         }
 
-        /* ── 토글 스위치 ── */
         .toggle-track {
             width: 44px; height: 24px;
             background: rgba(255,255,255,0.1);
@@ -68,34 +66,28 @@
         }
         .toggle-track.on .toggle-thumb { transform: translateX(20px); }
 
-        /* ── 빠른 선택 버튼 활성화 ── */
         .quick-day-btn.active {
             background: rgba(6,182,212,0.15);
             border-color: rgba(6,182,212,0.4);
             color: #06B6D4;
         }
 
-        /* ── 구독 성공 배너 ── */
         #subscribe-success { display: none; }
         #subscribe-success.show { display: flex; }
 
-        /* number spinner 표시 */
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button { opacity: 1; }
 
-        /* time input 색상 */
         input[type=time]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.4); cursor: pointer; }
     </style>
 </head>
 <body class="bg-dark text-white min-h-screen relative overflow-x-hidden">
 
-    <!-- Ambient Background -->
     <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-primary/20 blur-[120px] pointer-events-none"></div>
     <div class="fixed bottom-[-20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-secondary/20 blur-[150px] pointer-events-none"></div>
 
     <div class="container mx-auto px-4 py-12 lg:py-20 relative z-10 max-w-7xl">
 
-        <!-- Header -->
         <header class="text-center mb-16 fade-in-up">
             <div class="inline-flex items-center justify-center space-x-3 mb-4">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg shadow-primary/30">
@@ -112,7 +104,6 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
 
-            <!-- ── LEFT: 입력 폼 ── -->
             <div class="lg:col-span-5 flex flex-col gap-6 fade-in-up" style="animation-delay: 0.1s;">
                 <div class="glass-panel p-6 md:p-8 rounded-2xl relative overflow-hidden">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary"></div>
@@ -122,7 +113,6 @@
                         기본 정보 설정
                     </h2>
 
-                    <!-- Demo Buttons -->
                     <div class="mb-6 pb-6 border-b border-white/10">
                         <p class="text-sm text-gray-400 mb-3 block">👉 빠른 테스트 (데모 입력)</p>
                         <div class="flex flex-wrap gap-2">
@@ -133,7 +123,6 @@
 
                     <form id="compass-form" class="space-y-6">
 
-                        <!-- Job Category -->
                         <div>
                             <label for="job-category" class="block text-sm font-medium text-gray-300 mb-2">직군 (Job Category)</label>
                             <div class="relative">
@@ -173,7 +162,6 @@
                             </div>
                         </div>
 
-                        <!-- Job Role -->
                         <div>
                             <label for="job-role" class="block text-sm font-medium text-gray-300 mb-2">직종 (Job Role)</label>
                             <div class="relative">
@@ -186,7 +174,6 @@
                             </div>
                         </div>
 
-                        <!-- Keywords -->
                         <div>
                             <label class="block text-sm font-medium text-gray-300 mb-2">관심 키워드 (Keywords)</label>
                             <div class="bg-dark/50 border border-white/10 rounded-xl p-2 min-h-[100px] flex flex-col transition-all focus-within:ring-2 focus-within:ring-primary focus-within:border-primary">
@@ -196,12 +183,7 @@
                             <p class="text-xs text-gray-500 mt-2">최소 1개 이상의 키워드를 입력해주세요.</p>
                         </div>
 
-                        <!-- ════════════════════════════════
-                             정기 구독 섹션
-                        ════════════════════════════════ -->
                         <div class="border-t border-white/10 pt-5">
-
-                            <!-- 토글 헤더 -->
                             <div class="flex items-center justify-between cursor-pointer select-none" id="subscribe-toggle-row">
                                 <div class="flex items-center gap-2">
                                     <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -217,17 +199,13 @@
                                 </div>
                             </div>
 
-                            <!-- 슬라이드 패널 -->
                             <div id="subscribe-panel">
                                 <div class="mt-4 space-y-4">
-
-                                    <!-- 안내 -->
                                     <div class="bg-accent/5 border border-accent/20 rounded-xl p-3 text-xs text-gray-400 flex gap-2 items-start">
                                         <span class="text-accent shrink-0 text-sm">ℹ️</span>
                                         <span>설정한 직군·키워드로 매일 지정 시간에 n8n이 자동 분석 후 이메일로 브리핑을 발송합니다. '탐지 + 구독 등록하기' 버튼을 누르면 즉시 1회 실행 + 구독 등록이 동시에 됩니다.</span>
                                     </div>
 
-                                    <!-- 구독 기간 -->
                                     <div>
                                         <label class="block text-sm font-medium text-gray-300 mb-2">
                                             구독 기간 <span class="text-xs text-gray-500">(최대 90일)</span>
@@ -238,7 +216,6 @@
                                                     class="w-14 bg-transparent text-white text-sm outline-none text-center">
                                                 <span class="text-sm text-gray-400">일</span>
                                             </div>
-                                            <!-- 빠른 선택 -->
                                             <div class="flex gap-1">
                                                 <button type="button" data-days="7"  class="quick-day-btn text-xs px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 transition-all">7일</button>
                                                 <button type="button" data-days="30" class="quick-day-btn active text-xs px-2.5 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-gray-400 transition-all">30일</button>
@@ -247,7 +224,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- 발송 시간 -->
                                     <div>
                                         <label for="sub-time" class="block text-sm font-medium text-gray-300 mb-2">
                                             매일 발송 시간 <span class="text-xs text-gray-500">(KST)</span>
@@ -257,14 +233,12 @@
                                         <p class="text-xs text-gray-500 mt-1">권장: 출근 전 07:00 ~ 09:00</p>
                                     </div>
 
-                                    <!-- 이메일 -->
                                     <div>
                                         <label for="sub-email" class="block text-sm font-medium text-gray-300 mb-2">수신 이메일</label>
                                         <input type="email" id="sub-email" placeholder="your@email.com"
                                             class="w-full bg-dark/50 border border-white/10 text-white text-sm rounded-xl p-3 outline-none focus:ring-2 focus:ring-accent transition-all placeholder-gray-600">
                                     </div>
 
-                                    <!-- 등록 성공 배너 -->
                                     <div id="subscribe-success" class="items-center gap-3 bg-green-500/10 border border-green-500/30 rounded-xl p-3 text-sm">
                                         <svg class="w-5 h-5 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                         <div>
@@ -276,9 +250,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- ── /정기 구독 섹션 ── -->
 
-                        <!-- Submit Button -->
                         <button type="submit" id="submit-btn" class="w-full mt-2 group relative flex justify-center py-4 px-4 border border-transparent text-base font-semibold rounded-xl text-white bg-gradient-to-r from-primary to-secondary hover:from-blue-600 hover:to-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:ring-offset-dark transition-all shadow-lg shadow-primary/25 overflow-hidden">
                             <span class="relative z-10 flex items-center gap-2" id="submit-btn-text">
                                 지금 변화신호 탐지하기
@@ -291,11 +263,9 @@
                 </div>
             </div>
 
-            <!-- ── RIGHT: 결과 영역 ── -->
             <div class="lg:col-span-7 flex flex-col h-full min-h-[600px] fade-in-up" style="animation-delay: 0.2s;">
                 <div class="glass-panel p-6 md:p-8 rounded-2xl h-full flex flex-col relative">
 
-                    <!-- Initial State -->
                     <div id="initial-state" class="flex-1 flex flex-col items-center justify-center text-center opacity-100 transition-opacity duration-300">
                         <div class="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-6 border border-white/10">
                             <svg class="w-10 h-10 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -306,7 +276,6 @@
                         <p class="text-gray-400 max-w-sm">좌측 폼에 직무와 관심 키워드를 입력하고<br>탐지 버튼을 눌러주세요.</p>
                     </div>
 
-                    <!-- Loading State -->
                     <div id="loading-state" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-card backdrop-blur-sm rounded-2xl z-10 transition-opacity duration-300">
                         <div class="relative w-24 h-24 mb-6">
                             <div class="absolute inset-0 rounded-full border-t-2 border-primary border-solid animate-spin spin-slow"></div>
@@ -320,7 +289,6 @@
                         <p id="loading-desc" class="text-gray-400 text-sm text-center">전 세계 수백 개의 소스에서 귀하의 직무에 맞는<br>중요한 변화 신호를 AI가 추출하고 있습니다.</p>
                     </div>
 
-                    <!-- Error State -->
                     <div id="error-state" class="hidden flex-1 flex flex-col items-center justify-center text-center opacity-100 transition-opacity duration-300">
                         <div class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mb-6 border border-red-500/20 text-red-400">
                             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
@@ -332,7 +300,6 @@
                         </button>
                     </div>
 
-                    <!-- Subscribe-only 완료 State -->
                     <div id="subscribe-only-state" class="hidden flex-1 flex flex-col items-center justify-center text-center opacity-100 transition-opacity duration-300">
                         <div class="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-6 border border-green-500/20">
                             <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -344,7 +311,6 @@
                         </button>
                     </div>
 
-                    <!-- Results Area -->
                     <div id="results-state" class="hidden flex-col h-full opacity-0 transition-opacity duration-500">
 
                         <div class="flex justify-between items-center mb-6 pb-4 border-b border-white/10">
@@ -360,7 +326,6 @@
 
                         <div class="custom-scrollbar overflow-y-auto pr-2 pb-4 space-y-8 flex-1">
 
-                            <!-- Summary -->
                             <div class="bg-gradient-to-r from-primary/10 to-transparent border border-primary/20 rounded-xl p-5 flex items-center gap-5">
                                 <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
                                     <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
@@ -371,7 +336,6 @@
                                 </div>
                             </div>
 
-                            <!-- Signals List -->
                             <div class="space-y-4">
                                 <h3 class="text-base font-semibold text-white flex items-center gap-2">
                                     <svg class="w-5 h-5 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
@@ -380,7 +344,6 @@
                                 <div id="signals-container" class="grid gap-4"></div>
                             </div>
 
-                            <!-- Strategy Guide -->
                             <div class="space-y-4 bg-dark/40 rounded-xl p-6 border border-white/5">
                                 <h3 class="text-base font-semibold text-white flex items-center gap-2 mb-4">
                                     <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
@@ -415,7 +378,6 @@
         </div>
     </div>
 
-    <!-- News Modal -->
     <div id="news-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
         <div id="news-modal-overlay" class="absolute inset-0 bg-black/70 backdrop-blur-sm cursor-pointer"></div>
         <div class="relative bg-dark border border-white/10 rounded-2xl w-full max-w-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden transform scale-95 transition-transform duration-300" id="news-modal-content">
@@ -438,18 +400,12 @@
         </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         JavaScript
-    ═══════════════════════════════════════════ -->
     <script>
-        // ── 상태 ──
         let keywordsList = [];
         let isSubscribeMode = false;
 
-        // Production Webhook URL (n8n Activate 후 이 URL 사용)
         const WEBHOOK_URL = "https://n8n.cocoasoft.co.kr/webhook/signal-compass_v2";
 
-        // ── 직군·직종 데이터 ──
         const jobData = [
             { "group": "영업 (Sales)", "jobs": ["B2B 영업","B2C 영업 / 리테일","영업 기획 / 전략","해외 영업","파트너십 / 제휴","부동산 중개"] },
             { "group": "경영지원 (Operations)", "jobs": ["경영기획 / 전략","사업운영 (Ops)","총무 / 시설","법무 / 컴플라이언스","비서 / 어드민"] },
@@ -480,7 +436,6 @@
             { "group": "기타 (Other)", "jobs": ["해당 직군 없음"] }
         ];
 
-        // ── DOM 참조 ──
         const form            = document.getElementById('compass-form');
         const keywordInput    = document.getElementById('keyword-input');
         const tagsContainer   = document.getElementById('tags-container');
@@ -492,7 +447,6 @@
         const viewResults     = document.getElementById('results-state');
         const viewSubOnly     = document.getElementById('subscribe-only-state');
 
-        // ── 초기화 ──
         function initApp() {
             addTag('생성형 AI');
             addTag('RPA');
@@ -501,7 +455,6 @@
             document.addEventListener('DOMContentLoaded', initApp);
         } else { initApp(); }
 
-        // ── 직군 변경 → 직종 채우기 ──
         categorySelect.addEventListener('change', (e) => {
             const selectedGroup = e.target.value;
             roleSelect.innerHTML = '<option value="" disabled selected>직종을 선택해주세요</option>';
@@ -509,14 +462,16 @@
             if (groupData) {
                 groupData.jobs.forEach(job => {
                     const option = document.createElement('option');
-                    option.value = job; option.textContent = job;
+                    option.value = job;
+                    option.textContent = job;
                     roleSelect.appendChild(option);
                 });
                 roleSelect.disabled = false;
-            } else { roleSelect.disabled = true; }
+            } else {
+                roleSelect.disabled = true;
+            }
         });
 
-        // ── 키워드 태그 ──
         keywordInput.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ',') {
                 e.preventDefault();
@@ -534,7 +489,7 @@
         };
 
         function addTag(text) {
-            if (keywordsList.includes(text)) return;
+            if (!text || keywordsList.includes(text)) return;
             keywordsList.push(text);
             renderTags();
         }
@@ -544,20 +499,22 @@
             keywordsList.forEach(keyword => {
                 const tag = document.createElement('div');
                 tag.className = 'tag-item flex items-center gap-1.5 px-3 py-1.5 bg-primary/20 border border-primary/30 text-primary-100 text-sm rounded-lg text-white';
+
                 const span = document.createElement('span');
                 span.textContent = keyword;
+
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 btn.className = 'text-white/50 hover:text-white transition-colors focus:outline-none';
                 btn.onclick = () => window.removeTag(keyword);
                 btn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+
                 tag.appendChild(span);
                 tag.appendChild(btn);
                 tagsContainer.appendChild(tag);
             });
         }
 
-        // ── 데모 버튼 ──
         document.getElementById('demo-dev').addEventListener('click', () => {
             categorySelect.value = '개발 (Engineering)';
             categorySelect.dispatchEvent(new Event('change'));
@@ -565,6 +522,7 @@
             keywordsList = [];
             ['생성형 AI','마이크로서비스','클라우드 네이티브','보안 취약점'].forEach(addTag);
         });
+
         document.getElementById('demo-pm').addEventListener('click', () => {
             categorySelect.value = '기획 / PM (Product/Project Mgmt)';
             categorySelect.dispatchEvent(new Event('change'));
@@ -573,9 +531,6 @@
             ['SaaS 트렌드','자동화 프로세스','노코드/로우코드'].forEach(addTag);
         });
 
-        // ════════════════════════════════
-        // 정기 구독 토글 로직
-        // ════════════════════════════════
         const subscribeToggle = document.getElementById('subscribe-toggle');
         const subscribePanel  = document.getElementById('subscribe-panel');
         const subscribeLabel  = document.getElementById('subscribe-label');
@@ -587,7 +542,6 @@
             subscribePanel.classList.toggle('open', isSubscribeMode);
             subscribeLabel.textContent = isSubscribeMode ? '켜짐' : '꺼짐';
 
-            // 버튼 텍스트 변경
             if (isSubscribeMode) {
                 submitBtnText.innerHTML = `탐지 + 구독 등록하기
                     <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -601,7 +555,6 @@
             }
         });
 
-        // 빠른 기간 선택 버튼
         document.querySelectorAll('.quick-day-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.getElementById('sub-days').value = btn.dataset.days;
@@ -610,20 +563,23 @@
             });
         });
 
-        // ── 뷰 전환 ──
         function switchView(viewName) {
             [viewInitial, viewLoading, viewError, viewResults, viewSubOnly].forEach(v => {
                 v.classList.add('hidden');
                 v.classList.remove('flex');
             });
-            if (viewName === 'initial')   { viewInitial.classList.remove('hidden'); }
-            else if (viewName === 'loading') { viewLoading.classList.remove('hidden'); }
-            else if (viewName === 'error')   { viewError.classList.remove('hidden'); }
-            else if (viewName === 'sub-only') {
+
+            if (viewName === 'initial') {
+                viewInitial.classList.remove('hidden');
+            } else if (viewName === 'loading') {
+                viewLoading.classList.remove('hidden');
+            } else if (viewName === 'error') {
+                viewError.classList.remove('hidden');
+                viewError.classList.add('flex');
+            } else if (viewName === 'sub-only') {
                 viewSubOnly.classList.remove('hidden');
                 viewSubOnly.classList.add('flex');
-            }
-            else if (viewName === 'results') {
+            } else if (viewName === 'results') {
                 viewResults.classList.remove('hidden');
                 viewResults.classList.add('flex');
                 void viewResults.offsetWidth;
@@ -631,18 +587,27 @@
             }
         }
 
-        // ── 폼 제출 ──
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            // 기본 유효성 검사
             if (keywordsList.length === 0) {
                 alert('최소 1개 이상의 관심 키워드를 입력해주세요.');
                 keywordInput.focus();
                 return;
             }
 
-            // 구독 모드 유효성 검사
+            if (!categorySelect.value) {
+                alert('직군을 선택해주세요.');
+                categorySelect.focus();
+                return;
+            }
+
+            if (!roleSelect.value) {
+                alert('직종을 선택해주세요.');
+                roleSelect.focus();
+                return;
+            }
+
             if (isSubscribeMode) {
                 const email = document.getElementById('sub-email').value.trim();
                 if (!email || !email.includes('@')) {
@@ -652,19 +617,17 @@
                 }
             }
 
-            // 페이로드 구성
             const payload = {
                 jobCategory: categorySelect.value,
                 jobRole: roleSelect.value,
                 keywords: keywordsList,
-                // 구독 관련 필드
+                maxPage: 10,
                 subscribe: isSubscribeMode,
-                subscribeEmail: isSubscribeMode ? document.getElementById('sub-email').value.trim() : null,
-                subscribeDays:  isSubscribeMode ? parseInt(document.getElementById('sub-days').value, 10) : null,
-                subscribeTime:  isSubscribeMode ? document.getElementById('sub-time').value : null,
+                subscribeEmail: isSubscribeMode ? document.getElementById('sub-email').value.trim() : '',
+                subscribeDays: isSubscribeMode ? parseInt(document.getElementById('sub-days').value, 10) : null,
+                subscribeTime: isSubscribeMode ? document.getElementById('sub-time').value : ''
             };
 
-            // 로딩 메시지 분기
             if (isSubscribeMode) {
                 document.getElementById('loading-title').textContent = '탐지 + 구독 등록 중...';
                 document.getElementById('loading-desc').innerHTML = '뉴스를 수집·분석하고,<br>정기 구독을 함께 등록하고 있습니다.';
@@ -679,18 +642,29 @@
                 const response = await fetch(WEBHOOK_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({
+                        body: payload
+                    })
                 });
-                if (!response.ok) throw new Error('HTTP error! status: ' + response.status);
-                const data = await response.json();
+
+                const rawText = await response.text();
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status} - ${rawText || '응답 본문 없음'}`);
+                }
+
+                let data;
+                try {
+                    data = rawText ? JSON.parse(rawText) : {};
+                } catch (parseError) {
+                    throw new Error(`JSON 파싱 실패: ${parseError.message} / 응답: ${rawText}`);
+                }
+
                 const parsed = Array.isArray(data) ? data[0] : data;
 
-                // 구독 전용 응답 처리
-                // n8n이 { subscribeOnly: true, message: "..." } 를 반환하면 구독 완료 화면
                 if (parsed.subscribeOnly) {
                     showSubscribeSuccess(parsed.message);
                 } else {
-                    // 구독 성공 배너 표시 (탐지 결과와 함께)
                     if (isSubscribeMode) {
                         const banner = document.getElementById('subscribe-success');
                         const detail = document.getElementById('subscribe-success-detail');
@@ -702,8 +676,9 @@
 
             } catch (error) {
                 console.error('Webhook Error:', error);
-                // 에러 시 데모 결과 표시
-                setTimeout(() => mockSuccessForDemo(), 1500);
+                document.getElementById('error-message').textContent =
+                    `웹훅 호출 실패: ${error.message}`;
+                switchView('error');
             }
         });
 
@@ -719,14 +694,23 @@
             document.getElementById('subscribe-success').classList.remove('show');
             setTimeout(() => { switchView('initial'); }, 300);
         });
-        document.getElementById('retry-btn').addEventListener('click', () => { switchView('initial'); });
-        document.getElementById('subscribe-only-reset').addEventListener('click', () => { switchView('initial'); });
 
-        // ── 결과 렌더링 ──
+        document.getElementById('retry-btn').addEventListener('click', () => {
+            switchView('initial');
+        });
+
+        document.getElementById('subscribe-only-reset').addEventListener('click', () => {
+            switchView('initial');
+        });
+
         function renderResults(data) {
             const now = new Date();
             document.getElementById('update-time').innerText = now.toLocaleString('ko-KR', {
-                year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit'
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit'
             });
 
             const signals = data.signals || [];
@@ -762,34 +746,34 @@
                             '<div class="flex items-center flex-wrap mb-2">' +
                                 '<span class="px-2.5 py-0.5 text-xs font-medium rounded-full border ' + catColor + '">' + sig.category + '</span>' + surgeBadge +
                             '</div>' +
-                            '<h4 class="text-white font-medium text-base leading-snug group-hover:text-primary-100 transition-colors pr-6">' + sig.title + '</h4>' +
+                            '<h4 class="text-white font-medium text-base leading-snug group-hover:text-primary-100 transition-colors pr-6">' + (sig.title || '') + '</h4>' +
                         '</div>' +
                         '<div class="flex flex-col items-center justify-center w-12 h-12 rounded-lg bg-dark/50 border border-white/5 shrink-0 z-10">' +
                             '<span class="text-xs text-gray-500 mb-0.5">Score</span>' +
-                            '<span class="text-lg font-bold ' + scoreColor + ' leading-none">' + sig.score + '</span>' +
+                            '<span class="text-lg font-bold ' + scoreColor + ' leading-none">' + (sig.score ?? '') + '</span>' +
                         '</div>' +
                     '</div>' +
-                    '<p class="text-sm text-gray-400 font-light mt-1 pl-1 border-l-2 border-white/10">' + sig.reason + '</p>';
+                    '<p class="text-sm text-gray-400 font-light mt-1 pl-1 border-l-2 border-white/10">' + (sig.reason || '') + '</p>';
 
                 signalsContainer.appendChild(card);
             });
 
             const strategy = data.strategyGuide || {};
-            document.getElementById('strategy-action').innerHTML   = (strategy.shortTermActions  || []).map(a => '<li>' + a + '</li>').join('');
-            document.getElementById('strategy-learning').innerHTML = (strategy.recommendedLearning|| []).map(a => '<li>' + a + '</li>').join('');
-            document.getElementById('strategy-risk').innerHTML     = (strategy.potentialRisks    || []).map(a => '<li>' + a + '</li>').join('');
+            document.getElementById('strategy-action').innerHTML   = (strategy.shortTermActions || []).map(a => '<li>' + a + '</li>').join('');
+            document.getElementById('strategy-learning').innerHTML = (strategy.recommendedLearning || []).map(a => '<li>' + a + '</li>').join('');
+            document.getElementById('strategy-risk').innerHTML     = (strategy.potentialRisks || []).map(a => '<li>' + a + '</li>').join('');
             document.getElementById('strategy-opp').innerText      = strategy.opportunitySummary || '해당사항 없음';
+
             switchView('results');
         }
 
-        // ── 뉴스 모달 ──
         window.openNewsModal = function(signal) {
             const modal        = document.getElementById('news-modal');
             const modalContent = document.getElementById('news-modal-content');
             const titleEl      = document.getElementById('news-modal-signal-title');
             const listEl       = document.getElementById('news-list-container');
 
-            titleEl.textContent = signal.title;
+            titleEl.textContent = signal.title || '';
             listEl.innerHTML = '';
 
             if (signal.relatedArticles && signal.relatedArticles.length > 0) {
@@ -802,7 +786,7 @@
                     el.innerHTML =
                         '<div class="flex justify-between items-start gap-4">' +
                             '<div>' +
-                                '<h5 class="text-white text-sm font-medium mb-1.5 group-hover:text-primary-100 transition-colors">' + article.title + '</h5>' +
+                                '<h5 class="text-white text-sm font-medium mb-1.5 group-hover:text-primary-100 transition-colors">' + (article.title || '') + '</h5>' +
                                 '<div class="flex items-center gap-2 text-xs text-gray-500">' +
                                     '<span>' + (article.source || '출처 미상') + '</span>' +
                                     '<span>•</span>' +
@@ -822,6 +806,7 @@
                 modalContent.classList.remove('scale-95');
                 modalContent.classList.add('scale-100');
             }, 10);
+
             document.getElementById('news-modal-overlay').onclick = window.closeNewsModal;
         };
 
@@ -832,37 +817,6 @@
             modalContent.classList.add('scale-95');
             modal.classList.add('opacity-0', 'pointer-events-none');
         };
-
-        // ── 데모 Mock ──
-        function mockSuccessForDemo() {
-            renderResults({
-                signals: [
-                    {
-                        title: "오픈소스 LLM의 약진 및 상용 모델과의 성능 격차 감소",
-                        category: "기술 변화", score: 8.5, isSurge: true,
-                        reason: "안전하게 로컬 구축 시도가 급증.",
-                        relatedArticles: [
-                            { title: "메타, Llama 3 공개... '가장 성능 뛰어난 오픈소스 AI'", url: "https://example.com/1", source: "IT Daily", date: "2026-04-18" },
-                            { title: "로컬 AI 서버 시장 급성장, 클라우드 의존도 낮추나", url: "https://example.com/2", source: "테크 뉴스", date: "2026-04-15" }
-                        ]
-                    },
-                    {
-                        title: "EU AI Act 공식 발효 임박, 규제 준수 요구 강화",
-                        category: "규제 변화", score: 9.2, isSurge: true,
-                        reason: "데이터 투명성 검증 아키텍처 필수적 요구됨.",
-                        relatedArticles: [
-                            { title: "EU, 세계 최초 AI 통합법안 승인... 벌금 '폭탄' 주의", url: "https://example.com/3", source: "글로벌 이코노미", date: "2026-04-10" }
-                        ]
-                    }
-                ],
-                strategyGuide: {
-                    shortTermActions:   ["오픈소스 서빙 테스트 환경 구축", "가이드라인 수립"],
-                    recommendedLearning:["RAG 모델링 테스트", "보안 규정 확인"],
-                    potentialRisks:     ["비용 및 데이터 유출 리스크"],
-                    opportunitySummary: "통합 역량을 갖춘다면 핵심적인 역할을 수행할 수 있습니다."
-                }
-            });
-        }
     </script>
 </body>
 </html>
