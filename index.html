@@ -703,10 +703,10 @@
                 }
 
             } catch (error) {
-                console.error('Webhook Error:', error);
-                // 에러 시 데모 결과 표시
-                setTimeout(() => mockSuccessForDemo(), 1500);
-            }
+			    console.error('Webhook Error:', error);
+    			document.getElementById('error-message').textContent = '웹훅 호출 실패: ' + error.message;
+    			switchView('error');
+			}
         });
 
         function showSubscribeSuccess(message) {
